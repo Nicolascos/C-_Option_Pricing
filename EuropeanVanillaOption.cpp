@@ -19,6 +19,4 @@ EuropeanVanillaOption::EuropeanVanillaOption(double expiry, double strike):Optio
 		_strike = strike;
 	}
 
-
-
 }

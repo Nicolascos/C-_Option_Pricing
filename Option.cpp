@@ -12,4 +12,3 @@ double Option::get_expiry() const
 {
 	return _expiry;
 }
-
