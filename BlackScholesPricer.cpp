@@ -13,8 +13,9 @@ BlackScholesPricer::BlackScholesPricer(EuropeanVanillaOption* option, double ass
 	{
 		throw std::invalid_argument("Option must be initialized (it's a pointer)");
 	}
+}
 
-	double BlackScholesPricer::operator() ()const
+double BlackScholesPricer::operator() ()const
 	{
 		double S = _asset_price;
 		double K = _strike;
@@ -37,4 +38,3 @@ BlackScholesPricer::BlackScholesPricer(EuropeanVanillaOption* option, double ass
 
 
 	}
-}
