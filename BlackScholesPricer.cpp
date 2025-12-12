@@ -15,7 +15,7 @@ BlackScholesPricer::BlackScholesPricer(EuropeanVanillaOption* option, double ass
 	}
 }
 
-double BlackScholesPricer::operator() ()const
+double BlackScholesPricer::operator() ()const // ()() fct operator redefine
 {
 	double S = _asset_price;
 	double K = _option->getStrike();
@@ -31,7 +31,7 @@ double BlackScholesPricer::operator() ()const
 		return S * (0.5 * std::erfc(-d1 / sqrt(2))) - K * exp(-r * T) * (0.5 * std::erfc(-d2 / sqrt(2))); //erfc: N(x)=1/2 erfc(-x/sqrt(2))
 	}
 
-	else 
+	else
 	{
 		return K * exp(-r * T) * (0.5 * std::erfc(d2 / sqrt(2))) - S * (0.5 * std::erfc(d1 / sqrt(2)));
 	}
