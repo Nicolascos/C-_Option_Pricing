@@ -1,7 +1,7 @@
 #pragma once
-#include "EuropeanVanillaOption.h"
+#include "EuropeanVanillaOption.h" // to inherit from EuropeanVanillaOption
 
-class CallOption: public EuropeanVanillaOption
+class CallOption: public EuropeanVanillaOption // Heritage from EuropeanVanillaOption
 {
 public:
 	CallOption(double expiry,double strike);
