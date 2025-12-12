@@ -11,16 +11,12 @@ EuropeanVanillaOption::EuropeanVanillaOption(double expiry, double strike):Optio
 
 	if (strike < 0) 
 	{
-		throw std::invalid_argument("Strike must be positive (or call me lmao)");
+		throw std::invalid_argument("Strike must be positive.");
 	}
 
 	else 
 	{
-		
-		
 		_strike = strike;
-
-
 	}
 
 
