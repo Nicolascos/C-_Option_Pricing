@@ -47,13 +47,15 @@ double BlackScholesPricer::delta() const
 
 	double d1 = (log(S / K) + T * (r + sigma * sigma / 2)) / (sigma * sqrt(T));
 
+	double delta=0.5 * std::erfc(-d1 / sqrt(2));
+
 	if (_option->GetOptionType() == OptionType::Call) 
 	{
-		return 0.5 * std::erfc(-d1 / sqrt(2)); //N(d1)
+		return delta; //N(d1)
 	}
 
 	else 
 	{
-		return -0.5 * std::erfc(d1 / sqrt(2)); //N(d1)-1
+		return delta-1; //N(d1)-1
 	}
 }
