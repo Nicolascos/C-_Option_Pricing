@@ -2,6 +2,7 @@
 #include <cmath>
 #include<stdexcept>
 
+
 BlackScholesPricer::BlackScholesPricer(EuropeanVanillaOption* option, double asset_price, double interest_rate, double volatility)
 {
 	_option = option;
@@ -13,22 +14,24 @@ BlackScholesPricer::BlackScholesPricer(EuropeanVanillaOption* option, double ass
 	{
 		throw std::invalid_argument("Option must be initialized (it's a pointer)");
 	}
+
 }
+
 
 double BlackScholesPricer::operator() ()const
 	{
 		double S = _asset_price;
-		double K = _strike;
+		double K = _option->getStrike();
 		double r = _interest_rate;
-		double T = _expiry; //En années (à vérifier!!!)
+		double T = _option->get_expiry(); //En années (à vérifier!!!)
 		double sigma = _volatility;
 
 		double d1 = (log(S / K) + T * (r + sigma * sigma / 2)) / (sigma * sqrt(T));
 		double d2 = d1 - sigma * sqrt(T);
 
-		if (GetOptionType(_option) == Call) 
+		if (_option ->GetOptionType() == OptionType::Call) 
 		{
-			return S * (0.5 * std::erfc(-d1 / sqrt(2))) - K * exp(-r * T) * (0.5 * std::erfc(-d2 / sqrt(2))); //erfc: N(x)=1/2 erfc(-x/sqrt(2))
+			return S *0.5 * std::erfc(-d1 / sqrt(2)) - K * exp(-r * T) * (0.5 * std::erfc(-d2 / sqrt(2))); //erfc: N(x)=1/2 erfc(-x/sqrt(2))
 		}
 
 		else 
@@ -38,3 +41,4 @@ double BlackScholesPricer::operator() ()const
 
 
 	}
+
